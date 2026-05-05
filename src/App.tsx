@@ -1,42 +1,28 @@
-import { type FC, useState } from 'react';
+import { Link, Route, Routes } from 'react-router';
+import { UseFormStatus } from './components/UseFormStatusDemo.tsx';
+import { UseTransitionDemo } from './components/UseTransitionDemo.tsx';
 
-import reactLogo from './assets/react.svg';
-import './App.css';
-
-const title = import.meta.env['VITE_APP_TITLE'];
-// console.dir(import.meta.env);
-
-const App: FC = () => {
-  const [count, setCount] = useState(0);
-
+export default function App() {
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>{title}</h1>
-      <div className="card">
-        <button
-          onClick={() => {
-            setCount((count) => count + 1);
-          }}
-        >
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div className="w-full min-h-dvh grid justify-center items-center">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="UseTransitionDemo" element={<UseTransitionDemo />} />
+        <Route path="UseFormStatusDemo" element={<UseFormStatus />} />
+      </Routes>
     </div>
   );
-};
+}
 
-export default App;
+function Home() {
+  return (
+    <nav className="grid gap-8">
+      <Link className="block" to="/UseTransitionDemo">
+        useTransitionを使ったフォームページへ
+      </Link>
+      <Link className="block" to="/UseFormStatusDemo">
+        useFormStatusを使ったフォームページへ
+      </Link>
+    </nav>
+  );
+}
