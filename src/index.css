@@ -37,8 +37,6 @@
     min-width: 320px;
     min-height: 100vh;
     margin: 0;
-
-    @apply bg-amber-50;
   }
 
   button {
